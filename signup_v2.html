@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>註冊頁面</title>
+    <style>
+        @font-face {
+            font-family: 'Yuanchuan';
+            src: url('./public/GenSenRoundedTW-M-01.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'Yuanchuan', Arial, sans-serif;
+            background-color: #E9DFE9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+        
+        .header {
+            background-color: #A46A9C;
+            color: white;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            
+        }
+
+        .header .logo {
+            font-size: 24px;
+            font-weight: bold;            
+        }
+
+        .header .logo a{
+            text-decoration: none;
+            color: white;
+        }
+
+        .header .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .header .auth-buttons button {
+            background-color: #C29979;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+            margin-top: 100px; /* 顶部留出空间给header */
+        }
+
+        .container h2 {
+            margin-bottom: 10px;
+            color: #A46A9C;
+        }
+
+        .container h3 {
+            margin-bottom: 20px;
+            color: #A46A9C;
+            font-size: 14px;
+            font-weight: normal;
+        }
+
+        .container form,
+        .container .oauth-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container input[type="email"],
+        .container input[type="password"],
+        .container button {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: block;
+        }
+
+        .container button {
+            background-color: #A46A9C;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .container button:hover {
+            background-color: #C29979;
+        }
+
+        .container p {
+            margin-top: 20px;
+            color: #666;
+        }
+
+        .container a {
+            color: #A46A9C;
+            text-decoration: none;
+        }
+
+        .oauth-buttons {
+            width: 100%;
+            padding: 0 10px;
+        }
+
+        .oauth-buttons button {
+            width: 100%;
+            background-color: #4285F4;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .oauth-buttons button:hover {
+            background-color: #357ae8;
+        }
+
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            color: #666;
+        }
+
+        .footer a {
+            color: #A46A9C;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo"><i><a href="/">Whisper</a></i></div>
+
+    </div>
+
+    <div class="container">
+        <h2>註冊</h2>
+        <h3>安心的秘密基地</h3>
+        <form id="registerForm">
+            <input type="email" id="email" name="email" placeholder="電子郵件" required>
+            <input type="password" id="password" name="password" placeholder="密碼" required>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="確認密碼" required>
+            <button type="submit">加入我們</button>
+        </form>
+        <div class="oauth-buttons">
+            <button onclick="window.location.href='https://accounts.google.com/o/oauth2/auth'">
+                使用 Google 註冊
+            </button>
+        </div>
+        <div class="footer">
+            <p><a href="terms.html">服務條款</a> | <a href="privacy.html">隱私政策</a></p>
+        </div>
+        <p>已經有帳號了？<a href="login.html">登入</a></p>
+    </div>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                alert('密碼不一致，請重新確認');
+                return;
+            }
+
+            // 這裡可以使用AJAX或Fetch API將表單數據發送到伺服器端
+            // 然後伺服器端處理註冊和發送驗證郵件的邏輯
+
+            alert('註冊成功，請檢查您的電子郵件進行驗證');
+
+            // 清空表單
+            document.getElementById('registerForm').reset();
+        });
+    </script>
+</body>
+</html>
